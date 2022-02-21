@@ -28,7 +28,8 @@ export async function getStaticPaths() {
   client.close();
 
   return {
-    fallback: false, //Return 404 error if request doesnt meet paths defined
+    fallback: "blocking", // false Return 404 error if request doesnt meet paths defined
+    // blocking makes the user wait without any response while the page is being built
     paths: meetups.map((meetup) => ({
       params: {
         meetupID: meetup._id.toString(),
